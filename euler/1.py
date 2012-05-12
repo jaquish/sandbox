@@ -32,7 +32,7 @@ class Board:
 		for i in range(len(self.state)):
 			self.toDraw[i].draw()
 
-	def compute_next(self,dt):
+	def compute_next(self):
 
 		i = self.current
 		if (i >= len(self.state)):
@@ -51,13 +51,16 @@ class Board:
 		self.current += 1
 		self.toDraw[i].draw()
 
+	def update(self, dt):
+		b.compute_next()
+		b.printme()
+
+b = Board(BOARD_SIZE)
+
 @window.event
 def on_draw():
 	window.clear()
 	b.printme()
 
-b = Board(BOARD_SIZE)
-
-
-pyglet.clock.schedule_interval(b.compute_next, 0.01)
+pyglet.clock.schedule_interval(b.update, 0.01)
 pyglet.app.run()
