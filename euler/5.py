@@ -43,7 +43,7 @@ def slightly_smarter():
 		else:
 			n += 20								# n must be divisible by 20, try only these multiples
 
-factors = []
+# factors = []
 def find_factors(n):
 	factors = []
 	i = 2
