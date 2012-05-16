@@ -19,7 +19,6 @@ class Board:
 		for i in range(len(self.state)):
 			label = pyglet.text.Label(
 						str(i), 
-                        font_name='Times New Roman Bold', 
                         font_size=14,
                         x=(40*i) % (40*10), y= window.height - (i/10 * 40),
                         anchor_x='left', anchor_y='top')
@@ -28,9 +27,8 @@ class Board:
 		self.current = 0
 
 	def printme(self):
-		
 		for i in range(len(self.state)):
-			self.toDraw[i].draw()
+		  	self.toDraw[i].draw()
 
 	def compute_next(self):
 
@@ -48,19 +46,21 @@ class Board:
 			self.state[i] = unknown	
 			self.toDraw[i].color = unknown_color
 
-		self.current += 1
 		self.toDraw[i].draw()
+		self.current += 1
 
 	def update(self, dt):
 		b.compute_next()
-		b.printme()
+		# b.printme()
 
 b = Board(BOARD_SIZE)
 
+fps_display = pyglet.clock.ClockDisplay()
+
 @window.event
 def on_draw():
-	window.clear()
-	b.printme()
+    window.clear()
+    fps_display.draw()
 
-pyglet.clock.schedule_interval(b.update, 0.01)
+pyglet.clock.schedule_interval(b.update, 1/60.0)
 pyglet.app.run()
