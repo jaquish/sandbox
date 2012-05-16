@@ -16,7 +16,7 @@ def is_palindrome(n):
 for i1 in range(100,999):
 	for i2 in range(100,999):
 		n = i1 * i2
-		print "testing: ", n, "            ", "\r",
+		print "testing: ", n, "              \r",
 
 		if (is_palindrome(n)):
 			palindromes.append(n)
