@@ -45,4 +45,20 @@ def elegant():
 		i += 1
 	print "sum=", sum
 
+# attempt at sieve of eratosthenes
+def more_elegant():
+	primes = set([])
+	for i in range(2,2000000,2):
+		if (not( i % 3 == 0 or i % 5 == 0 or i % 7 == 0 or i % 11 == 0)):
+	 		primes.add(i)
+	i = 1
+	while(i):
+		i = min(primes)
+		while(i < 2000000):
+			primes.remove(i)
+			i += i
+
+	print "Sum=", reduce(lambda x, y: x + y, primes)	
+
+more_elegant()
 elegant()
