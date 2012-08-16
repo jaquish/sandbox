@@ -1,23 +1,43 @@
-#include <iostream>
-#include "IList.cpp"
+#include <iostream> // printing list
+#include <iomanip>  // printing list
+#include <ctime>    // seeding random()
 
-using namespace std;
+#include "LinkedList.h"
 
 class Node
 {
-  public:
+  private:
     Node* next;
     int n;
     Node(int _n) { next = NULL; n = _n; }
+    friend class LinkedList;
 };
 
-class LinkedList : public IList
+LinkedList::LinkedList()
 {
-    int size;
-    Node* head;
-    LinkedList() { head = NULL; }
-    void append(int n);
-};
+    head = NULL;
+}
+
+
+LinkedList::LinkedList(int set_size)
+{
+    head = NULL;
+}
+
+LinkedList::~LinkedList()
+{
+    Node* h = head;
+}
+
+void LinkedList::generate()
+{
+     
+}
+void LinkedList::print() {;}
+
+void        LinkedList::remove(list_index k){;}
+list_index  LinkedList::find(int x){;}
+int         LinkedList::findKth(list_index k){;}
 
 void LinkedList::append(int n)
 {
@@ -38,7 +58,7 @@ void LinkedList::append(int n)
 
 void LinkedList::insert(int n, list_index k)
 {
-    if (list_index == 0)
+    if (k == 0)
     {
         Node* old_head = head;
         head = new Node(n);
@@ -51,7 +71,7 @@ void LinkedList::insert(int n, list_index k)
     // elemnt A  B  C  D  E  F  G  H  I  J
     // size = 10
 
-    if (list_index > size)
+    if (k > size)
     {
         // can't insert into that position
         return;

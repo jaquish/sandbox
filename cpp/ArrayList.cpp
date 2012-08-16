@@ -1,42 +1,21 @@
 #include <iostream> // printing list
 #include <iomanip>  // printing list
 #include <ctime>    // seeding random()
-#include <cstdlib>  // atoi
+#include <cstdlib>
 
-#include "Utility.cpp"
-#include "IList.cpp"
+#include "ArrayList.h"
 
 using namespace std;
 
-//const unsigned int list_size = 20;
-const unsigned int element_max = 100;
-
-class ArrayList : public IList
-{
-    public:
-        ArrayList(int size);     // constructor
-        ~ArrayList();            // 
-
-        void generate();
-        void print();
-
-        // sorting
-        void insertion_sort();
-        void selection_sort();
-        void shell_sort();
-        void bubble_sort();
-        void cocktail_sort();
-        void quick_sort();
-        
-    private:
-        const unsigned int list_size;
-        int* _list;
-};
-
 ArrayList::ArrayList(int size) : list_size(size)
 {
-    _list = new int[size];
+    _list = new int[list_size];
     generate();
+}
+
+ArrayList::~ArrayList()
+{
+    delete _list;
 }
 
 void ArrayList::generate()
@@ -59,6 +38,47 @@ void ArrayList::print()
     }
     cout << "]\n";
 }
+
+void ArrayList::insert(int x, list_index k)
+{
+    if (k > list_size)
+    {
+        return;
+    }
+
+    if (k == list_size)
+    {
+        int* old_list = _list;
+        _list = new int[list_size+1];
+        
+        for(int i = 0; i < list_size; i++)
+        {
+            _list[i] = old_list[i];
+        }
+
+        delete old_list;
+    }
+    
+    _list[k] = x;
+    list_size++;
+}
+
+void ArrayList::remove(list_index k)
+ {
+     if (k > list_size-1)
+     {
+         return;
+     }
+
+     list_size--;
+
+     for(int i = k; i < list_size; i++)
+     {
+         _list[i] = _list[i+1];
+     }
+}
+list_index ArrayList::find(int x) { ; }
+int ArrayList::findKth(list_index k) { ; }
 
 void ArrayList::insertion_sort()
 {

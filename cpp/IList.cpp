@@ -6,7 +6,6 @@ typedef int list_index;
 class IList
 {
 public:
-    // pure virtual functions- force class to be abstract
     virtual void generate() { ; }
     virtual void print() { ; }
     
@@ -15,7 +14,6 @@ public:
     virtual list_index  find(int x) { ; }
     virtual int         findKth(list_index k) { ; }
 
-    // not required to implement these
     virtual void insertion_sort() { ; }
     virtual void selection_sort() { ; }
     virtual void shell_sort() { ; }

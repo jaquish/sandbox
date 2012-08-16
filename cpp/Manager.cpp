@@ -1,8 +1,10 @@
-#include "LinkedList.cpp"
-#include "ArrayList.cpp"
+#include "LinkedList.h"
+#include "ArrayList.h"
+#include "Utility.cpp"
 
 // function prototypes
 void sort_menu(IList* list);
+
 
 void main_menu(IList* list)
 {
@@ -61,6 +63,7 @@ void sort_menu(IList* list)
     }
 }
 
+
 int main_2();
 
 int main()
@@ -77,5 +80,5 @@ int main()
 
 int main_2()
 {
-    LinkedList* list = new LinkedList();
+    LinkedList* list = new LinkedList(20);
 }
